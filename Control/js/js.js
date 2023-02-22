@@ -156,8 +156,7 @@ function filtro_table(){//filtra la tabla con parametros de combobox
   else{
     swal("Error", "Selecciona los filtros", "warning");
   }
-}      
-  
+}
 
 
 

@@ -1,11 +1,9 @@
 <?php 
-  @session_start();
   if(isset($_GET["page"])){
   	$page=$_GET["page"];
   }else{
   	$page=0;
   }
-    
   $jsonData = '{"All_data":[
     {"ID": "1","SECRETARIA": "SEP","SUBSECRETARIA": "basica","PROYECTO": "basico sep 1","PRESUPUESTO_ORI": "100000","PRESUPUESTO_MOD": "200000","PRESUPUESTO_COM": "400000","PRESUPUESTO_DEV": "403000"},
     {"ID": "2","SECRETARIA": "SEP","SUBSECRETARIA": "basica","PROYECTO": "basico sep 2","PRESUPUESTO_ORI": "300000","PRESUPUESTO_MOD": "204000","PRESUPUESTO_COM": "420000","PRESUPUESTO_DEV": "400500"},
@@ -23,7 +21,6 @@
 //*********************************************************************select de la tabla ************/
     switch($page){
     case 1:
-      
      $json = '[
       {"ID": "1","SECRETARIA": "SEP","SUBSECRETARIA": "basica","PROYECTO": "basico sep 1","PRESUPUESTO_ORI": "100000","PRESUPUESTO_MOD": "200000","PRESUPUESTO_COM": "400000","PRESUPUESTO_DEV": "403000"},
       {"ID": "2","SECRETARIA": "SEP","SUBSECRETARIA": "basica","PROYECTO": "basico sep 2","PRESUPUESTO_ORI": "300000","PRESUPUESTO_MOD": "204000","PRESUPUESTO_COM": "420000","PRESUPUESTO_DEV": "4005000"},
@@ -120,63 +117,41 @@
     echo "<option value= '0' >NO PROYECTOS</option>";
   break;
   case 13: //combobox filter status
-    
-    /*$query = "SELECT * FROM tbl_laptop WHERE status_lap = '$status'";
-    $resultado = $con_core->prepare($query);
-    $resultado->execute();
-*/
-$json = '[
-  {"ID": "1","SECRETARIA": "SEP","SUBSECRETARIA": "basica","PROYECTO": "basico sep 1","PRESUPUESTO_ORI": "100000","PRESUPUESTO_MOD": "200000","PRESUPUESTO_COM": "400000","PRESUPUESTO_DEV": "403000"},
-  {"ID": "2","SECRETARIA": "SEP","SUBSECRETARIA": "basica","PROYECTO": "basico sep 2","PRESUPUESTO_ORI": "300000","PRESUPUESTO_MOD": "204000","PRESUPUESTO_COM": "420000","PRESUPUESTO_DEV": "4005000"},
-  {"ID": "3","SECRETARIA": "SEP","SUBSECRETARIA": "media","PROYECTO": "media sep 1","PRESUPUESTO_ORI": "30000","PRESUPUESTO_MOD": "204000","PRESUPUESTO_COM": "420000","PRESUPUESTO_DEV": "400060"},
-  {"ID": "4","SECRETARIA": "SEP","SUBSECRETARIA": "media","PROYECTO": "media sep 2","PRESUPUESTO_ORI": "300020","PRESUPUESTO_MOD": "204000","PRESUPUESTO_COM": "42300","PRESUPUESTO_DEV": "400040"},
-  {"ID": "5","SECRETARIA": "SRE","SUBSECRETARIA": "politica","PROYECTO": "politica 1","PRESUPUESTO_ORI": "30020","PRESUPUESTO_MOD": "204020","PRESUPUESTO_COM": "42300","PRESUPUESTO_DEV": "403000"},
-  {"ID": "6","SECRETARIA": "SRE","SUBSECRETARIA": "politica","PROYECTO": "politica 2","PRESUPUESTO_ORI": "31020","PRESUPUESTO_MOD": "224020","PRESUPUESTO_COM": "42320","PRESUPUESTO_DEV": "403020"},
-  {"ID": "7","SECRETARIA": "SRE","SUBSECRETARIA": "direccion","PROYECTO": "direccion 1","PRESUPUESTO_ORI": "31030","PRESUPUESTO_MOD": "224020","PRESUPUESTO_COM": "42320","PRESUPUESTO_DEV": "404000"},
-  {"ID": "8","SECRETARIA": "SRE","SUBSECRETARIA": "direccion","PROYECTO": "direccion 2","PRESUPUESTO_ORI": "31130","PRESUPUESTO_MOD": "224020","PRESUPUESTO_COM": "42310","PRESUPUESTO_DEV": "405000"},
-  {"ID": "9","SECRETARIA": "SEDENA","SUBSECRETARIA": "defenza","PROYECTO": "defenza 1","PRESUPUESTO_ORI": "21130","PRESUPUESTO_MOD": "222020","PRESUPUESTO_COM": "42510","PRESUPUESTO_DEV": "403600"},
-  {"ID": "10","SECRETARIA": "SEDENA","SUBSECRETARIA": "defenza","PROYECTO": "defenza 2","PRESUPUESTO_ORI": "32130","PRESUPUESTO_MOD": "234020","PRESUPUESTO_COM": "44310","PRESUPUESTO_DEV": "407000"},
-  {"ID": "11","SECRETARIA": "SEDENA","SUBSECRETARIA": "Guardia","PROYECTO": "Guardia 1","PRESUPUESTO_ORI": "31130","PRESUPUESTO_MOD": "244020","PRESUPUESTO_COM": "43310","PRESUPUESTO_DEV": "408000"},
-  {"ID": "12","SECRETARIA": "SEDENA","SUBSECRETARIA": "Guardia","PROYECTO": "Guardia 2","PRESUPUESTO_ORI": "41130","PRESUPUESTO_MOD": "254020","PRESUPUESTO_COM": "43310","PRESUPUESTO_DEV": "409000"}
-  ]';
- $data = json_decode($json, true);
+      $json = '[
+        {"ID": "1","SECRETARIA": "SEP","SUBSECRETARIA": "basica","PROYECTO": "basico sep 1","PRESUPUESTO_ORI": "100000","PRESUPUESTO_MOD": "200000","PRESUPUESTO_COM": "400000","PRESUPUESTO_DEV": "403000"},
+        {"ID": "2","SECRETARIA": "SEP","SUBSECRETARIA": "basica","PROYECTO": "basico sep 2","PRESUPUESTO_ORI": "300000","PRESUPUESTO_MOD": "204000","PRESUPUESTO_COM": "420000","PRESUPUESTO_DEV": "4005000"},
+        {"ID": "3","SECRETARIA": "SEP","SUBSECRETARIA": "media","PROYECTO": "media sep 1","PRESUPUESTO_ORI": "30000","PRESUPUESTO_MOD": "204000","PRESUPUESTO_COM": "420000","PRESUPUESTO_DEV": "400060"},
+        {"ID": "4","SECRETARIA": "SEP","SUBSECRETARIA": "media","PROYECTO": "media sep 2","PRESUPUESTO_ORI": "300020","PRESUPUESTO_MOD": "204000","PRESUPUESTO_COM": "42300","PRESUPUESTO_DEV": "400040"},
+        {"ID": "5","SECRETARIA": "SRE","SUBSECRETARIA": "politica","PROYECTO": "politica 1","PRESUPUESTO_ORI": "30020","PRESUPUESTO_MOD": "204020","PRESUPUESTO_COM": "42300","PRESUPUESTO_DEV": "403000"},
+        {"ID": "6","SECRETARIA": "SRE","SUBSECRETARIA": "politica","PROYECTO": "politica 2","PRESUPUESTO_ORI": "31020","PRESUPUESTO_MOD": "224020","PRESUPUESTO_COM": "42320","PRESUPUESTO_DEV": "403020"},
+        {"ID": "7","SECRETARIA": "SRE","SUBSECRETARIA": "direccion","PROYECTO": "direccion 1","PRESUPUESTO_ORI": "31030","PRESUPUESTO_MOD": "224020","PRESUPUESTO_COM": "42320","PRESUPUESTO_DEV": "404000"},
+        {"ID": "8","SECRETARIA": "SRE","SUBSECRETARIA": "direccion","PROYECTO": "direccion 2","PRESUPUESTO_ORI": "31130","PRESUPUESTO_MOD": "224020","PRESUPUESTO_COM": "42310","PRESUPUESTO_DEV": "405000"},
+        {"ID": "9","SECRETARIA": "SEDENA","SUBSECRETARIA": "defenza","PROYECTO": "defenza 1","PRESUPUESTO_ORI": "21130","PRESUPUESTO_MOD": "222020","PRESUPUESTO_COM": "42510","PRESUPUESTO_DEV": "403600"},
+        {"ID": "10","SECRETARIA": "SEDENA","SUBSECRETARIA": "defenza","PROYECTO": "defenza 2","PRESUPUESTO_ORI": "32130","PRESUPUESTO_MOD": "234020","PRESUPUESTO_COM": "44310","PRESUPUESTO_DEV": "407000"},
+        {"ID": "11","SECRETARIA": "SEDENA","SUBSECRETARIA": "Guardia","PROYECTO": "Guardia 1","PRESUPUESTO_ORI": "31130","PRESUPUESTO_MOD": "244020","PRESUPUESTO_COM": "43310","PRESUPUESTO_DEV": "408000"},
+        {"ID": "12","SECRETARIA": "SEDENA","SUBSECRETARIA": "Guardia","PROYECTO": "Guardia 2","PRESUPUESTO_ORI": "41130","PRESUPUESTO_MOD": "254020","PRESUPUESTO_COM": "43310","PRESUPUESTO_DEV": "409000"}
+        ]';
+      $data = json_decode($json, true);
+      $cbxSecretaria = $_POST['CbxSecretaria']; //recibe el parametro por medio del ajax
+      $cbxSSecretaria = $_POST['CbxSSecretaria'];
+      $cbxProyecto = $_POST['CbxProyecto'];
 
-
- $cbxSecretaria = $_POST['CbxSecretaria']; //recibe el parametro por medio del ajax
- $cbxSSecretaria = $_POST['CbxSSecretaria'];
- $cbxProyecto = $_POST['CbxProyecto'];
-
-if ( !$data ) {
-  die("Error");
-}else{
-  $arreglo = array();
-  foreach ($data as $row): 
-    if($row['SECRETARIA']==$cbxSecretaria AND  $row['SUBSECRETARIA']==$cbxSSecretaria AND  $row['PROYECTO']==$cbxProyecto){
-  $arreglo["data"][] = $row;
-    }  
-endforeach;
-  if($arreglo ==[]){
-    $arreglo= null;
-    echo json_encode($arreglo);
-  }else{
-    echo json_encode($arreglo);
-  }
-}
-
-/*if (!$resultado) {
-        die('Error');
-    } else {
-      $arreglo = array();
-      foreach ($resultado as $row): 
-      $arreglo["data"][] = $row;
+      if ( !$data ) {
+        die("Error");
+      }else{
+        $arreglo = array();
+        foreach ($data as $row): 
+          if($row['SECRETARIA']==$cbxSecretaria AND  $row['SUBSECRETARIA']==$cbxSSecretaria AND  $row['PROYECTO']==$cbxProyecto){
+        $arreglo["data"][] = $row;
+          }  
       endforeach;
-        if ($arreglo == []) {
-            $arreglo = null;
-            echo json_encode($arreglo);
-        } else {
-            echo json_encode($arreglo);
+        if($arreglo ==[]){
+          $arreglo= null;
+          echo json_encode($arreglo);
+        }else{
+          echo json_encode($arreglo);
         }
-    }*/
+      }
     break;    
 }
     
